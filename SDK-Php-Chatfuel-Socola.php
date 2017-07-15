@@ -187,7 +187,7 @@
 
             $this->sendAttachment('template', array(
                 'template_type'     => 'list',
-                'top_element_style' => $topElementStyle
+                'top_element_style' => $topElementStyle,
                 'elements'          => $elements
             ));
 	    }

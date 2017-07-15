@@ -1,13 +1,23 @@
 # SDK-Php-Chatfuel-Socola
-SDK Php Chatfue Socola
+SDK Php Chatfue Socola <br>
+Using php to generate JSON for Chatfuel bot
 
-## Mục lục
-[Create bot]()
-[Create bot](create-bot)
-[]()
-[]()
-[]()
-[]()
+## all doc
+[eate bot](#create-bot) <br> <br>
+[Send text messages](# Send text messages)
+[Send an image](# Send an image) <br>
+[Send a file](# Send a file) <br>
+[Send an audio](# Send an audio) <br>
+[Create a button](# Create a button) <br>
+[Create Button To URL](# Create Button To URL) <br>
+[Create Button To Block](# Create Button To Block) <br>
+[Create Button Share](# Create Button Share) <br>
+[Create Button Call](# Create Button Call) <br>
+[Create Button Quick Reply](# Create Button Quick Reply) <br>
+[Send a text card with one or more button (max 3 buttons)](# Send a text card with one or more button (max 3 buttons)) <br>
+[# Create element](# Create element)
+[Send a gallery](# Send a gallery) <br>
+[Send a list template min 2 element](# Send a list template min 2 element) <br>
 
 ## Create bot
 ```javascript
