@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Socola\\": "src/Socola/"
+            "socola\\": "src/socola/"
         }
     }
 }
