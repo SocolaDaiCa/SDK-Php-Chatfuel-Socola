@@ -1,12 +1,13 @@
 {
     "name": "socola/sdk-php-chatfuel-socola",
     "description": "class gender json for chatbot facebook chatfuel",
-    "type": "liblary",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Socola Đại Ca",
-            "email": "tokentien@gmail.com"
+            "email": "tokentien@gmail.com",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "dev",
@@ -15,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Socola\\": "src/"
+            "Socola\\": "src/socola/"
         }
     }
 }
