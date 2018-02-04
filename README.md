@@ -1,24 +1,6 @@
 # SDK-Php-Chatfuel-Socola
 SDK Php Chatfue Socola <br>
 Using php to generate JSON for Chatfuel bot
-
-## all doc
-[eate bot](#create-bot)<br>
-[Send text](#Send-text-messages)<br>
-[Send an image](#Send-an-image)<br>
-[Send a file](#Send-a-file)<br>
-[Send an audio](#Send-an-audio)<br>
-[Create a button](#Create-a-button)<br>
-[Create Button To URL](#Create-Button-To-URL)<br>
-[Create Button To Block](#Create-Button-To-Block)<br>
-[Create Button Share](#Create-Button-Share)<br>
-[Create Button Call](#Create-Button-Call)<br>
-[Create Button Quick Reply](#Create-Button-Quick-Reply)<br>
-[Send a text card with one or more button (max 3 buttons)](#Send-a-text-card-with-one-or-more-button-(max-3-buttons))<br>
-[# Create element](#Create-element)<br>
-[Send a gallery](#Send-a-gallery)<br>
-[Send a list template min 2 element](#Send-a-list-template-min-2-element)<br>
-
 ## Create bot
 ```php
 use Socola\Chatfuel;
@@ -41,7 +23,7 @@ $images = [
 $bot->sendImage($image);
 $bot->sendImage(images);
 ```
-<h2 id="send-file">Send file</h2>
+## Send file
 ```javascript
 $file = 'https://01b02091.ngrok.io/test.pdf';
 $files = array(
@@ -51,7 +33,7 @@ $files = array(
 $bot->sendFile($file);
 $bot->sendFile($files);
 ```
-<h2 id="send-audio">Send audio</h2>
+## Send audio
 ```javascript
 $audio = 'https://01b02091.ngrok.io/test.mp3';
 $audios = [
