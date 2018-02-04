@@ -4,7 +4,7 @@ Using php to generate JSON for Chatfuel bot
 
 ## all doc
 [eate bot](#create-bot)<br>
-[Send text messages](#Send-text-messages)<br>
+[Send text](#Send-text-messages)<br>
 [Send an image](#Send-an-image)<br>
 [Send a file](#Send-a-file)<br>
 [Send an audio](#Send-an-audio)<br>
@@ -19,99 +19,91 @@ Using php to generate JSON for Chatfuel bot
 [Send a gallery](#Send-a-gallery)<br>
 [Send a list template min 2 element](#Send-a-list-template-min-2-element)<br>
 
-## Create bot
-```javascript
-require_once 'SDK-Php-Chatfuel-Socola.javascript';
-$bot = new Chatfuel(TRUE);
+<h2 id="create-bot">Create bot</h2>
+```php
+use Socola\Chatfuel;
+$bot = new Chatfuel();
 ```
-
-## Send text messages
-```javascript
+<h2 id="send-text">Send text</h2>
+```php
 $text = 'Socola';
-$arrayTexts = array(
-	'Socola',
-	'Đại',
-	'Ca'
-);
-$bot->sendText($text_or_arrayTexts);
+$texts = [$text, $text, $text, $text];
+$bot->sendText($text);
+$bot->sendText($texts);
 ```
-
-## Send an image
+<h2 id="send-image">Send image</h2>
 ```javascript
 $image = 'http://i.imgur.com/luWlRwV.jpg';
-$arrayImages = array(
+$images = [
 	'http://i.imgur.com/luWlRwV.jpg',
 	'http://i.imgur.com/luWlRwV.jpg'
-);
-$bot->sendImage($image_or_arrayImages);
+];
+$bot->sendImage($image);
+$bot->sendImage(images);
 ```
-
-## Send a file
+<h2 id="send-file">Send file</h2>
 ```javascript
 $file = 'https://01b02091.ngrok.io/test.pdf';
-$arrayFiles = array(
+$files = array(
 	'https://01b02091.ngrok.io/test.pdf',
 	'https://01b02091.ngrok.io/test.pdf'
 );
-$bot->sendFile($file_or_arrayFiles);
+$bot->sendFile($file);
+$bot->sendFile($files);
 ```
-
-## Send an audio
+<h2 id="send-audio">Send audio</h2>
 ```javascript
 $audio = 'https://01b02091.ngrok.io/test.mp3';
-$arrayAudios = array(
+$audios = [
 	'https://01b02091.ngrok.io/test.mp3',
 	'https://01b02091.ngrok.io/test.mp3'
-);
-$bot->sendAudio($audio_or_arrayAudios);
+];
+$bot->sendAudio($audio);
+$bot->sendAudio($audios);
 ```
-
 ## Create a button
-
 ### Create Button To URL
 ```javascript
 $title = "button to url";
 $url = "http://www.facebook.com";
 $buttonToURL = $bot->createButtonToURL($title, $url, $setAttributes = Null);
 ```
-
 ### Create Button To Block
 ```javascript
 $title = "button to block";
 $block = "re-start";
 $buttonToBlock = $bot->createButtonToBlock($title, $block, $setAttributes = Null);
 ```
-
 ### Create Button Share
 ```javascript
 $buttonShare = $bot->createButtonShare();
 ```
-
 ### Create Button Call
 ```javascript
 $phoneNumber = '096******5';
-$buttonCall    = $bot->createButtonCall($phoneNumber, $title = 'Call');
+$buttonCall  = $bot->createButtonCall($phoneNumber, $title = 'Call');
 ```
-
 ### Create Button Quick Reply
 ```javascript
-$block = "re-start";
-$arrayBlocks = array(
+$block = 're-start';
+$blocks = [
 	'play',
 	'pause'
-);
-$bot->createButtonQuickReply($title, $block_or_arrayBlocks);
+];
+$bot->createButtonQuickReply($title, $block);
+$bot->createButtonQuickReply($title, $blocks);
 ```
 
 ### Send a text card with one or more button (max 3 buttons)
 ```javascript
 $text = 'this is text card';
-$arrayButtons = array(
+$uttons = [
 	$buttonToURL,
 	$buttonToBlock,
 	$buttonShare
-);
-$bot->sendTextCard($text, $button_or_arrayButtons);
+];
+$bot->sendTextCard($text, $button);
+$bot->sendTextCard($text, $buttons);
 ```
 
 ### Create element
@@ -136,9 +128,4 @@ You can switch type “top_element_style” between “large” and “compact�
 ```javascript
 $topElementStyle = 'large';
 $bot->sendList($arrayElements, $topElementStyle);
-```
-
-
-```javascript
-
 ```
