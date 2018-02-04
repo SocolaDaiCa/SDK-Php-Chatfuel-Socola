@@ -19,20 +19,20 @@ Using php to generate JSON for Chatfuel bot
 [Send a gallery](#Send-a-gallery)<br>
 [Send a list template min 2 element](#Send-a-list-template-min-2-element)<br>
 
-<h2 id="create-bot">Create bot</h2>
+## Create bot
 ```php
 use Socola\Chatfuel;
 $bot = new Chatfuel();
 ```
-<h2 id="send-text">Send text</h2>
+## Send text
 ```php
 $text = 'Socola';
 $texts = [$text, $text, $text, $text];
 $bot->sendText($text);
 $bot->sendText($texts);
 ```
-<h2 id="send-image">Send image</h2>
-```javascript
+## Send image
+```php
 $image = 'http://i.imgur.com/luWlRwV.jpg';
 $images = [
 	'http://i.imgur.com/luWlRwV.jpg',
