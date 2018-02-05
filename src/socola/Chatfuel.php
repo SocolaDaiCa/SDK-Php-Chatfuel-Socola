@@ -2,26 +2,27 @@
 	/**
 	 * http://docs.chatfuel.com/plugins/plugin-documentation/json-api
 	 */
-	interface ChatfuelInterface{
-		public function sendText($text_or_arrayTexts);
-		public function sendImage($image_or_arrayImages);
-		public function sendFile($file_or_arrayFiles);
-		public function sendVideo($url_or_arrayUrls);
-		public function sendAudio($audio_or_arrayAudios);
+	// interface ChatfuelInterface{
+	// 	public function sendText($text_or_arrayTexts);
+	// 	public function sendImage($image_or_arrayImages);
+	// 	public function sendFile($file_or_arrayFiles);
+	// 	public function sendVideo($url_or_arrayUrls);
+	// 	public function sendAudio($audio_or_arrayAudios);
 
-		public function createButtonToURL($title, $url, $setAttributes = NULL);
-		public function createButtonToBlock($title, $block_or_arrayBlocks, $setAttributes = NULL);
-		public function createButtonShare();
-		public function createButtonCall($phoneNumber, $title = 'Call');
-		public function createButtonQuickReply($title, $block_or_arrayBlocks);
+	// 	public function createButtonToURL($title, $url, $setAttributes = NULL);
+	// 	public function createButtonToBlock($title, $block_or_arrayBlocks, $setAttributes = NULL);
+	// 	public function createButtonShare();
+	// 	public function createButtonCall($phoneNumber, $title = 'Call');
+	// 	public function createButtonQuickReply($title, $block_or_arrayBlocks);
 
-		public function sendTextCard($text, $buttons_or_arrayButtons);
-		public function createElement($title, $image, $subTitle, $buttons);
-		public function sendGallery($element_or_arrayElement);
-		public function sendList($arrayElements, $topElementStyle = 'large');
-		public function isURL($url);
-	}
-	class Chatfuel implements ChatfuelInterface
+	// 	public function sendTextCard($text, $buttons_or_arrayButtons);
+	// 	public function createElement($title, $image, $subTitle, $buttons);
+	// 	public function sendGallery($element_or_arrayElement);
+	// 	public function sendList($arrayElements, $topElementStyle = 'large');
+	// 	public function isURL($url);
+	// }
+	namespace Socola;
+	class Chatfuel/* implements ChatfuelInterface*/
 	{
 		private $debug;
 		public $messages;
