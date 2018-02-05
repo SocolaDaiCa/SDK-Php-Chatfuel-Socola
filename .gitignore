@@ -1,3 +1,4 @@
 /vendor/
 test.php
 /test/
+composer.lock

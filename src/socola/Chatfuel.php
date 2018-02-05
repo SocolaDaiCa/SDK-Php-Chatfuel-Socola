@@ -2,33 +2,32 @@
 	/**
 	 * http://docs.chatfuel.com/plugins/plugin-documentation/json-api
 	 */
-	// interface ChatfuelInterface{
-	// 	public function sendText($text_or_arrayTexts);
-	// 	public function sendImage($image_or_arrayImages);
-	// 	public function sendFile($file_or_arrayFiles);
-	// 	public function sendVideo($url_or_arrayUrls);
-	// 	public function sendAudio($audio_or_arrayAudios);
-
-	// 	public function createButtonToURL($title, $url, $setAttributes = NULL);
-	// 	public function createButtonToBlock($title, $block_or_arrayBlocks, $setAttributes = NULL);
-	// 	public function createButtonShare();
-	// 	public function createButtonCall($phoneNumber, $title = 'Call');
-	// 	public function createButtonQuickReply($title, $block_or_arrayBlocks);
-
-	// 	public function sendTextCard($text, $buttons_or_arrayButtons);
-	// 	public function createElement($title, $image, $subTitle, $buttons);
-	// 	public function sendGallery($element_or_arrayElement);
-	// 	public function sendList($arrayElements, $topElementStyle = 'large');
-	// 	public function isURL($url);
-	// }
 	namespace Socola;
-	class Chatfuel/* implements ChatfuelInterface*/
+	interface ChatfuelInterface{
+		public function sendText($text_or_arrayTexts);
+		public function sendImage($image_or_arrayImages);
+		public function sendFile($file_or_arrayFiles);
+		public function sendVideo($url_or_arrayUrls);
+		public function sendAudio($audio_or_arrayAudios);
+
+		public function createButtonToURL($title, $url, $setAttributes = NULL);
+		public function createButtonToBlock($title, $block_or_arrayBlocks, $setAttributes = NULL);
+		public function createButtonShare();
+		public function createButtonCall($phoneNumber, $title = 'Call');
+		public function createButtonQuickReply($title, $block_or_arrayBlocks);
+
+		public function sendTextCard($text, $buttons_or_arrayButtons);
+		public function createElement($title, $image, $subTitle, $buttons);
+		public function sendGallery($element_or_arrayElement);
+		public function sendList($arrayElements, $topElementStyle = 'large');
+		public function isURL($url);
+	}
+	class Chatfuel implements ChatfuelInterface
 	{
-		private $debug;
-		public $messages;
-		public function __construct($debug = false)
+		protected $debug;
+		protected $messages;
+		function __construct($debug = false)
 		{
-			// header('Content-Type: application/json; charset=UTF-8');
 			$this->debug = $debug;
 		}
 
@@ -50,27 +49,27 @@
 
 		public function sendImage($url)
 		{
-			$this->sendMedia('image', $url);
+			self::sendMedia('image', $url);
 		}
 
 		public function sendFile($url)
 		{
-			$this->sendMedia('file', $url);
+			self::sendMedia('file', $url);
 		}
 
 		public function sendVideo($url)
 		{
-			$this->sendMedia('video', $url);
+			self::sendMedia('video', $url);
 		}
 
 		public function sendAudio($url)
 		{
-			$this->sendMedia('audio', $url);
+			self::sendMedia('audio', $url);
 		}
 
 		public function createButtonToURL($title, $url, $setAttributes = NULL)
 		{
-			if ($this->isURL($url)) {
+			if (self::isURL($url)) {
 				return null;
 			}
 
@@ -146,7 +145,7 @@
 			if(empty($buttons[0]['title']))
 				$buttons = [$buttons];
 
-			$this->sendAttachment('template', [
+			self::sendAttachment('template', [
 				'template_type' => 'button',
 				'text' => $text,
 				'buttons' => $buttons
@@ -158,7 +157,7 @@
 			if(empty($buttons[0]['type']))
 				$buttons = [$buttons];
 
-			if ($this->isURL($image) && is_array($buttons)) {
+			if (self::isURL($image) && is_array($buttons)) {
 				return array(
 					'title' => $title,
 					'image_url' => $image,
@@ -175,7 +174,7 @@
 			if(empty($elements[0]['title']))
 				return FALSE;
 
-			$this->sendAttachment('template', [
+			self::sendAttachment('template', [
 				'template_type' => 'generic',
 				'elements'      => $elements
 			]);
@@ -186,16 +185,16 @@
 			if(empty($elements[0]['title']))
 				$elements = array($elements);
 
-			$this->sendAttachment('template', [
+			self::sendAttachment('template', [
 				'template_type'     => 'list',
 				'top_element_style' => $topElementStyle,
 				'elements'          => $elements
 			]);
 		}
 
-		public function __destruct()
+		function __destruct()
 		{
-			$this->sentMessages();
+			self::sentMessages();
 		}
 
 		public function isURL($url){
@@ -209,10 +208,10 @@
 			}
 
 			foreach ($url as $value) {
-				if ($this->isURL($value)) {
-					$this->sendAttachment($type, ['url' => $value]);
+				if (self::isURL($value)) {
+					self::sendAttachment($type, ['url' => $value]);
 				} else {
-					$this->sendText('Error: Invalid URL!');
+					self::sendText("Error: Invalid {$type} URL!");
 				}
 			}
 		}
@@ -235,19 +234,19 @@
 					)
 				);
 			} else {
-				$this->sendText('Error: Invalid type!');
+				self::sendText('Error: Invalid type!');
 			}
 		}
 
 		public function sentMessages()
 		{
 			if(is_null($this->messages))
-				$this->sendText(NULL);
-
+				self::sendText(NULL);
+			header('Content-Type: application/json; charset=UTF-8');
 			if($this->debug){
-				echo json_encode($this, JSON_PRETTY_PRINT);
+				echo json_encode(['messages' => $this->messages], JSON_PRETTY_PRINT);
 			}else{
-				echo json_encode($this);
+				echo json_encode(['messages' => $this->messages]);
 			}
 		}
 
