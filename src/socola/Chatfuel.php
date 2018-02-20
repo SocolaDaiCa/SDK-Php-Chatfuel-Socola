@@ -1,7 +1,15 @@
 <?php
-	/**
-	 * http://docs.chatfuel.com/plugins/plugin-documentation/json-api
-	 */
+
+/**
+ * @Author: Socola
+ * @Email: TokenTien@gmail.com
+ * @Date:   2018-02-16 07:34:15
+ * @Last Modified by:   Socola
+ * @Last Modified time: 2018-02-20 07:44:15
+ */
+/**
+ * http://docs.chatfuel.com/plugins/plugin-documentation/json-api
+ */
 	namespace Socola;
 	interface ChatfuelInterface{
 		public function sendText($text_or_arrayTexts);
